@@ -1,5 +1,5 @@
 """
-Experience comparing several dimensions
+Experience comparing several dimensions.
 Leon Zheng
 """
 

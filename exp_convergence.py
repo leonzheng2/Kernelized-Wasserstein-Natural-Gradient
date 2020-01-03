@@ -5,7 +5,8 @@ Leon Zheng
 
 import math
 import numpy as np
-from kwng import estimate_wasserstein_inverse_metric, grad_L_theta, h_theta, compute_element_for_inverse_metric
+from kwng import estimate_wasserstein_inverse_metric, compute_element_for_inverse_metric
+from multi_normal_model import grad_L_theta, h_theta
 
 def experience_relative_errors(d, N_list, sigma_0, num_run, real_theta, lamb, eps):
     errors_list = []
