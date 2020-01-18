@@ -5,8 +5,10 @@ Leon Zheng
 
 import math
 import numpy as np
-from kwng import estimate_wasserstein_inverse_metric, compute_element_for_inverse_metric
-from multi_normal_model import grad_L_theta, h_theta
+from src import KWNG
+from src.multinormal import grad_L_theta, h_theta
+
+## TODO remake
 
 def experience_relative_errors(d, N_list, sigma_0, num_run, real_theta, lamb, eps):
     errors_list = []
@@ -46,8 +48,8 @@ def experience_relative_errors(d, N_list, sigma_0, num_run, real_theta, lamb, ep
 
             # Kernelized Wasserstein Natural Gradient
             # print(f'Estimating Kernelized Wasserstein Natural Gradient, with {N} samples...')
-            C, K, grad_kernel_tensor = compute_element_for_inverse_metric(X, Y, idx, gaussian_kernel_sigma)
-            G_inv_hat = estimate_wasserstein_inverse_metric(theta, X, Y, Z, lamb, eps, C, K, grad_kernel_tensor)
+            C, K, grad_kernel_tensor = KWNG.compute_element_for_inverse_metric(X, Y, idx, gaussian_kernel_sigma)
+            G_inv_hat = KWNG.estimate_inverse_metric(theta, X, Y, Z, lamb, eps, C, K, grad_kernel_tensor)
             # print('Done!\n')
             kwng_hat = G_inv_hat @ grad_L_theta(theta, real_theta)
             # print(f'Estimated Kernelized Wasserstein natural gradient:\n{kwng_hat}')

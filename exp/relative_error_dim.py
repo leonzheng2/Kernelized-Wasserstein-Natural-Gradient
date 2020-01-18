@@ -3,7 +3,7 @@ Experience comparing several dimensions.
 Leon Zheng
 """
 
-from exp_convergence import experience_relative_errors
+from exp.convergence_old import experience_relative_errors
 import numpy as np
 import matplotlib.pyplot as plt
 
